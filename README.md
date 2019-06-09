@@ -1,6 +1,6 @@
 # Shows another breakage involving `atexit` on linux
 
-Here the `atexit` handler is invoked mistakenly multiple times.
+Here the `atexit` callback is invoked mistakenly multiple times.
 
 
 ## Build
@@ -36,6 +36,45 @@ unload
    libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f838518c000)
    /lib64/ld-linux-x86-64.so.2 (0x00007f83853cd000)
 unload
+unload
+```
+
+====
+
+## Other fun stuff to try
+
+### gdb
+
+Run program with gdb
+
+```
+LD_PRELOAD="${PWD}/build/libld-preload.so" gdb build/main 
+```
+
+will output 
+
+```
+load
+load
+unload
+```
+
+### lldb
+
+Run program with lldb
+
+```
+LD_PRELOAD="${PWD}/build/libld-preload.so" lldb build/main 
+```
+
+will output 
+
+```
+load
+load
+load
+unload
+load
 unload
 ```
 

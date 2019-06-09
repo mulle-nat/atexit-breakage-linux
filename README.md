@@ -39,7 +39,7 @@ unload
 unload
 ```
 
-====
+---
 
 ## Other fun stuff to try
 

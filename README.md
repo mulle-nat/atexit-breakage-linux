@@ -1,6 +1,7 @@
-# Shows another breakage involving `atexit` on linux
+# Shows a harmless but puzzling effect involving `atexit` on linux
 
-Here the `atexit` callback is invoked mistakenly multiple times.
+Here the `atexit` callback is invoked multiple times. This is no problem, since 
+the callback is shared among multiple processes and so multiple callbacks ensue.
 
 
 ## Build
